@@ -1,0 +1,15 @@
+source_domain: gitlab.galaksiodatanubo.work
+source_token: sbbr2u_F69zHuzicsmrz
+target_domain: git.nhdc.cn
+target_token: Et9VHcye1XFxVnv3_EzG
+project_list:
+  - galaksio-datanubo-v2/frontend
+  - thsy/cloud/ContainerCloud/gateway
+  - ucmp/ucmp-log/
+  - ucmp/ucmp-fe/
+  - galaxy-together/cus-neptune-authorization
+  - galaxy-together/cus-neptune-thematic
+webhook_token: JD98Dskw=23njQndW9D
+webhook_port: 6000
+repo_base_path: /Volumes/code/go/src/gitsync0902/repo/
+log_path: ./logs
