@@ -9,6 +9,7 @@ project_list:
   - ucmp/ucmp-fe/
   - galaxy-together/cus-neptune-authorization
   - galaxy-together/cus-neptune-thematic
+  - demo
 webhook_token: JD98Dskw=23njQndW9D
 webhook_port: 6000
 repo_base_path: /Volumes/code/go/src/gitsync0902/repo/
