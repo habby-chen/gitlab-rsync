@@ -1,5 +1,6 @@
 source_domain: gitlab.galaksiodatanubo.work
 source_token: sbbr2u_F69zHuzicsmrz
+source_protocol: http
 target_domain: 192.168.16.14:8081
 target_protocol: http
 target_token: Et9VHcye1XFxVnv3_EzG

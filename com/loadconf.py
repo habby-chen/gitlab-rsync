@@ -7,6 +7,7 @@ import yaml
 class Conf:
     source_domain = ""
     source_token = ""
+    source_protocol = ""
     target_domain = ""
     target_token = ""
     target_api_token = ""
@@ -24,6 +25,7 @@ def load_conf():
     c = Conf()
     c.source_domain = yml_data["source_domain"]
     c.source_token = yml_data["source_token"]
+    c.source_protocol = yml_data["source_protocol"]
     c.target_domain = yml_data["target_domain"]
     c.target_token = yml_data["target_token"]
     c.project_list = yml_data["project_list"]

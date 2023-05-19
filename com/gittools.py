@@ -57,11 +57,11 @@ def make_push_cmd():
 
 
 def make_add_remote_cmd(project, repo_path):
-    return "git remote add cz https://oauth2:%s@%s/%s.git" % (Config.target_token, Config.target_domain, project)
+    return "git remote add cz %s://oauth2:%s@%s/%s.git" % (Config.target_protocol,Config.target_token, Config.target_domain, project)
 
 
 def make_clone_cmd(project, repo_path):
-    return "git clone http://oauth2:%s@%s/%s.git  %s" % (Config.source_token, Config.source_domain, project, repo_path)
+    return "git clone %c://oauth2:%s@%s/%s.git  %s" % (Config.source_protocol, Config.source_token, Config.source_domain, project, repo_path)
 
 
 def cmd(cmd_str, work_dir):
