@@ -1,7 +1,9 @@
 source_domain: gitlab.galaksiodatanubo.work
 source_token: sbbr2u_F69zHuzicsmrz
-target_domain: git.nhdc.cn
+target_domain: 192.168.16.14:8081
+target_protocol: http
 target_token: Et9VHcye1XFxVnv3_EzG
+target_api_token: aCdMPuCRH7wzPweoePw5
 project_list:
   - galaksio-datanubo-v2/frontend
   - thsy/cloud/ContainerCloud/gateway

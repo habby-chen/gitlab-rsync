@@ -9,15 +9,17 @@ class Conf:
     source_token = ""
     target_domain = ""
     target_token = ""
+    target_api_token = ""
     project_list = []
     webhook_token = ""
     repo_base_path = ""
     log_path = ""
     webhook_port = 0
+    target_protocol = ""
 
 
 def load_conf():
-    f = open("config.yml")
+    f = open("./config.yml")
     yml_data = yaml.load(f, yaml.Loader)
     c = Conf()
     c.source_domain = yml_data["source_domain"]
@@ -29,6 +31,8 @@ def load_conf():
     c.repo_base_path = yml_data["repo_base_path"]
     c.webhook_port = yml_data["webhook_port"]
     c.log_path = yml_data["log_path"]
+    c.target_api_token = yml_data["target_api_token"]
+    c.target_protocol = yml_data["target_protocol"]
     print(yml_data)
     return c
 

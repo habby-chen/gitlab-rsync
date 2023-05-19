@@ -6,6 +6,7 @@ from flask import Flask, request, jsonify
 from gevent import monkey
 from gevent.pywsgi import WSGIServer
 
+from com import gitlab_api
 from com.gitevents import *
 from com.gittools import *
 from com.logger import logger
@@ -40,4 +41,5 @@ def event_listen():
 
 
 if __name__ == '__main__':
-    event_listen()
+    gitlab_api.GitlabApi
+    # event_listen()
