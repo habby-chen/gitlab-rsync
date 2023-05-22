@@ -17,7 +17,8 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def sync_event(): 
-    if 'X-Gitlab-Token' in request.headers.keys() and request.headers['X-Gitlab-Token'].strip() == Config.webhook_token.strip():
+    if 'X-Gitlab-Token' in request.headers.keys() \
+            and request.headers['X-Gitlab-Token'].strip() == Config.webhook_token.strip():
         if len(request.data) <= 0:
             return jsonify({'status': 'bad content'}), 403
         event = json.loads(request.data)
