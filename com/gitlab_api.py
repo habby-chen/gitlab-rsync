@@ -70,8 +70,3 @@ class GitlabApi:
 
 
 GitlabApi = GitlabApi()
-
-GitlabApi.CreateGroupByLongPath("test/test/test/test")
-GitlabApi.CreateGroupByLongPath("test/test/test/test")
-GitlabApi.CreateGroupByLongPath("test/test/test/test")
-GitlabApi.CreateGroupByLongPath("test/test/test/test")

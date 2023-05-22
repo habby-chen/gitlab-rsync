@@ -35,7 +35,6 @@ def load_conf():
     c.log_path = yml_data["log_path"]
     c.target_api_token = yml_data["target_api_token"]
     c.target_protocol = yml_data["target_protocol"]
-    print(yml_data)
     return c
 
 

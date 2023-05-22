@@ -6,7 +6,6 @@ from flask import Flask, request, jsonify
 from gevent import monkey
 from gevent.pywsgi import WSGIServer
 
-from com import gitlab_api
 from com.gitevents import *
 from com.gittools import *
 from com.logger import logger
@@ -17,8 +16,7 @@ app = Flask(__name__)
 
 
 @app.route('/webhook', methods=['POST'])
-def sync_event():
-
+def sync_event(): 
     if 'X-Gitlab-Token' in request.headers.keys() and request.headers['X-Gitlab-Token'].strip() == Config.webhook_token.strip():
         if len(request.data) <= 0:
             return jsonify({'status': 'bad content'}), 403
@@ -41,5 +39,5 @@ def event_listen():
 
 
 if __name__ == '__main__':
-    gitlab_api.GitlabApi
-    # event_listen()
+    print('\n'.join(('%s:   %s' % item for item in Config.__dict__.items())))  
+    event_listen()
