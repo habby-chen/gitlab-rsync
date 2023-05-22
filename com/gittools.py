@@ -5,6 +5,7 @@ import pathlib
 import subprocess
 import time
 
+from com.gitlab_api import GitlabApi
 from com.loadconf import Config
 from com.logger import logger
 
@@ -13,6 +14,10 @@ def nowsync(project):
     logger.info("开始同步 %s" % project)
     repo_path = Config.repo_base_path + project.replace("/", "_").replace("-", "_")
     if not os.path.exists(repo_path):
+        pid = GitlabApi.CreateGroupByLongPath(os.path.dirname(project))
+        if pid <= 0:
+            logger.error("创建group失败")
+            return
         clone_cmd = make_clone_cmd(project, repo_path)
         # 在缓存目录执行clone命令
         code, msg = cmd(clone_cmd, Config.repo_base_path)
@@ -21,7 +26,7 @@ def nowsync(project):
             return
         else:
             logger.info("%s 执行完毕", clone_cmd)
-        time.sleep()
+        time.sleep(3)
         # clone命令需要添加一个cz的remote 后续使用这个命令push
         add_remote_cmd = make_add_remote_cmd(project, repo_path)
         code, msg = cmd(add_remote_cmd, repo_path)
@@ -57,11 +62,13 @@ def make_push_cmd():
 
 
 def make_add_remote_cmd(project, repo_path):
-    return "git remote add cz %s://oauth2:%s@%s/%s.git" % (Config.target_protocol,Config.target_token, Config.target_domain, project)
+    return "git remote add cz %s://oauth2:%s@%s/%s.git" % (
+    Config.target_protocol, Config.target_token, Config.target_domain, project)
 
 
 def make_clone_cmd(project, repo_path):
-    return "git clone %c://oauth2:%s@%s/%s.git  %s" % (Config.source_protocol, Config.source_token, Config.source_domain, project, repo_path)
+    return "git clone %s://oauth2:%s@%s/%s.git  %s" % (
+    Config.source_protocol, Config.source_token, Config.source_domain, project, repo_path)
 
 
 def cmd(cmd_str, work_dir):

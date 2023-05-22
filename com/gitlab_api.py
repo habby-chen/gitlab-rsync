@@ -21,8 +21,7 @@ class GitlabApi:
 
     @lru_cache(maxsize=1)
     def GetProjectList(self, salt=0):
-        # 传入的key是一个随机数，用于刷新缓存
-        print(salt)
+        # salt传入的key是一个随机数，用于刷新缓存
         GroupList = {}
         for i in range(1, 100):
             params = {"per_page": 100, "page": i}
