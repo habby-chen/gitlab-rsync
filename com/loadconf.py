@@ -10,7 +10,6 @@ class Conf:
     source_protocol = ""
     target_domain = ""
     target_token = ""
-    target_api_token = ""
     project_list = []
     webhook_token = ""
     repo_base_path = ""

@@ -17,7 +17,7 @@ class GitlabApi:
 
     def __init__(self):
         self.gitlab_url = "%s://%s" % (Config.target_protocol, Config.target_domain)
-        self.header = {"PRIVATE-TOKEN": Config.target_api_token}
+        self.header = {"PRIVATE-TOKEN": Config.target_token}
 
     @lru_cache(maxsize=1)
     def GetProjectList(self, salt=0):
