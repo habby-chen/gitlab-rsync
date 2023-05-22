@@ -15,6 +15,6 @@ project_list:
   - demo
 webhook_token: JD98Dskw=23njQndW9D
 webhook_port: 6000
-repo_base_path: /Volumes/code/go/src/gitsync0902/repo/
+repo_base_path: ./repo/
 log_path: ./logs
 lock_path: /lock
