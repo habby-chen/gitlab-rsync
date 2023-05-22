@@ -63,12 +63,12 @@ def make_push_cmd():
 
 def make_add_remote_cmd(project, repo_path):
     return "git remote add cz %s://oauth2:%s@%s/%s.git" % (
-    Config.target_protocol, Config.target_token, Config.target_domain, project)
+        Config.target_protocol, Config.target_token, Config.target_domain, project)
 
 
 def make_clone_cmd(project, repo_path):
     return "git clone %s://oauth2:%s@%s/%s.git  %s" % (
-    Config.source_protocol, Config.source_token, Config.source_domain, project, repo_path)
+        Config.source_protocol, Config.source_token, Config.source_domain, project, repo_path)
 
 
 def cmd(cmd_str, work_dir):
@@ -82,16 +82,19 @@ def cmd(cmd_str, work_dir):
 
 def lock(work_dir):
     work_dir = work_dir.replace("/", "_")
-    path = pathlib.Path("./lock/%s.lock" % work_dir)
+    path = pathlib.Path("%s/%s.lock" % (Config.lock_path, work_dir))
     if path.exists():
         logger.info("等待任务完成:%s" % work_dir)
         return True
-    path.touch()
+    try:
+        path.touch()
+    except Exception as e:
+        logger.error("锁定文件创建:%s" % e)
     return False
 
 
 def unlock(work_dir):
     work_dir = work_dir.replace("/", "_")
-    path = pathlib.Path("./lock/%s.lock" % work_dir)
+    path = pathlib.Path("%s/%s.lock" % (Config.lock_path, work_dir))
     if path.exists():
         path.unlink()

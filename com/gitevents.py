@@ -37,7 +37,7 @@ def event_deal(message):
 
 def allow_action(message):
     if 'event_name' not in message.keys() or "project" not in message.keys():
-        logger.error("webhook参数缺乏 event_name project")
+        logger.error("webhook参数缺乏 event_name project；原始内容：%s" % message)
         return False
     if message['event_name']  not in ["tag_push","repository_update","push"]:
         logger.info('不受支持的事件 %s', message['event_name'])

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -- coding: utf-8 --**
+import argparse
 
 import yaml
 
@@ -16,10 +17,18 @@ class Conf:
     log_path = ""
     webhook_port = 0
     target_protocol = ""
+    lock_path = ""
 
 
 def load_conf():
-    f = open("./config.yml")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--config", help="配置文件路径", default="./config.yml")
+    args = parser.parse_args()
+    if len(args.config) > 0:
+        conf_path = args.config
+    else:
+        conf_path = "./config.yml"
+    f = open(conf_path)
     yml_data = yaml.load(f, yaml.Loader)
     c = Conf()
     c.source_domain = yml_data["source_domain"]
@@ -32,8 +41,8 @@ def load_conf():
     c.repo_base_path = yml_data["repo_base_path"]
     c.webhook_port = yml_data["webhook_port"]
     c.log_path = yml_data["log_path"]
-    c.target_api_token = yml_data["target_api_token"]
     c.target_protocol = yml_data["target_protocol"]
+    c.lock_path = yml_data["lock_path"]
     return c
 
 
@@ -44,4 +53,8 @@ def load_project_list():
     return yml_data["project_list"]
 
 
-Config = load_conf()
+try:
+    Config = load_conf()
+except Exception as e:
+    print("配置文件加载错误:%s" % e)
+    exit(1)
