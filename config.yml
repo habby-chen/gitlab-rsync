@@ -1,19 +1,13 @@
-source_domain: gitlab.galaksiodatanubo.work
-source_token: sbbr2u_F69zHuzicsmrz
+source_domain: *
+source_token: *
 source_protocol: http
-target_domain: 192.168.16.14:8081
+target_domain: *
 target_protocol: http
-target_token: Et9VHcye1XFxVnv3_EzG
-target_api_token: aCdMPuCRH7wzPweoePw5
+target_token: *
+target_api_token: *
 project_list:
-  - galaksio-datanubo-v2/frontend
-  - thsy/cloud/ContainerCloud/gateway
-  - ucmp/ucmp-log/
-  - ucmp/ucmp-fe/
-  - galaxy-together/cus-neptune-authorization
-  - galaxy-together/cus-neptune-thematic
   - demo
-webhook_token: JD98Dskw=23njQndW9D
+webhook_token: *
 webhook_port: 6000
 repo_base_path: ./repo/
 log_path: ./logs
