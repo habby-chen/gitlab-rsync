@@ -87,3 +87,5 @@ systemctl start gitsync
 
 
 ## 五、后续优化
+- [ ]  只是ssh方式推送代码
+- [ ]  支持ssh方式拉取代码
