@@ -4,7 +4,7 @@
 
 from com.gittools import nowsync, lock, unlock
 from com.logger import logger
-from com.loadconf import Config, load_project_list
+from com.loadconf import  load_project_list, ConfigPath
 
 
 def event_deal(message):
@@ -13,7 +13,7 @@ def event_deal(message):
     if isinstance(message, dict):
         if not allow_action(message):
             return
-        if allow_project(message["project"]["path_with_namespace"], load_project_list()):
+        if allow_project(message["project"]["path_with_namespace"], load_project_list(ConfigPath)):
             project = message["project"]["path_with_namespace"]
             logger.info("获取到新任务:" + message["project"]["path_with_namespace"])
         else:

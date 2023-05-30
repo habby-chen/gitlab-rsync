@@ -20,15 +20,8 @@ class Conf:
     lock_path = ""
 
 
-def load_conf():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--config", help="配置文件路径", default="./config.yml")
-    args = parser.parse_args()
-    if len(args.config) > 0:
-        conf_path = args.config
-    else:
-        conf_path = "./config.yml"
-    f = open(conf_path)
+def load_conf(config_path="./config.yml"):
+    f = open(config_path)
     yml_data = yaml.load(f, yaml.Loader)
     c = Conf()
     c.source_domain = yml_data["source_domain"]
@@ -46,15 +39,23 @@ def load_conf():
     return c
 
 
-def load_project_list():
+def load_project_list(ConfigPath="./config.yml"):
     # 为了及时发现配置变化，每次都会去加载配置
-    f = open("config.yml")
+    f = open(ConfigPath)
     yml_data = yaml.load(f, yaml.Loader)
     return yml_data["project_list"]
 
 
 try:
-    Config = load_conf()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--config", help="配置文件路径", default="./config.yml")
+    args = parser.parse_args()
+    if len(args.config) > 0:
+        conf_path = args.config
+    else:
+        conf_path = "./config.yml"
+    ConfigPath = conf_path
+    Config = load_conf(conf_path)
 except Exception as e:
     print("配置文件加载错误:%s" % e)
     exit(1)
